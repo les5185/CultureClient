@@ -36,7 +36,7 @@ import Close from '@material-ui/icons/Close';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 import Create from '@material-ui/icons/Create';
 
-import { appointments } from '../../../demo-data/appointments';
+import { appointments } from './data';
 
 const containerStyles = theme => ({
 	container: {
@@ -280,20 +280,20 @@ const styles = theme => ({
 });
 
 /* eslint-disable-next-line react/no-multi-comp */
-class Demo extends React.PureComponent {
+class SchedulerPage extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
 			data: appointments,
-			currentDate: '2018-06-27',
+			currentDate: '2021-06-27',
 			confirmationVisible: false,
 			editingFormVisible: false,
 			deletedAppointmentId: undefined,
 			editingAppointment: undefined,
 			previousAppointment: undefined,
 			addedAppointment: {},
-			startDayHour: 9,
-			endDayHour: 19,
+			startDayHour: 0,
+			endDayHour: 24,
 			isNewAppointment: false,
 		};
 
@@ -455,7 +455,7 @@ class Demo extends React.PureComponent {
 				>
 					<DialogTitle>
 						Delete Appointment
-			</DialogTitle>
+		</DialogTitle>
 					<DialogContent>
 						<DialogContentText>
 							Are you sure you want to delete this appointment?
@@ -490,4 +490,4 @@ class Demo extends React.PureComponent {
 	}
 }
 
-export default withStyles(styles, { name: 'EditingDemo' })(Demo);
+export default withStyles(styles, { name: 'EditingDemo' })(SchedulerPage);

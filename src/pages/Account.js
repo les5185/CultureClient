@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
-import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
+import LoginForm from '../components/LoginForm';
+import SignupForm from '../components/SignupForm';
 
 class Account extends Component {
 	constructor(props) {
