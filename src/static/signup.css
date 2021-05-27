@@ -1,0 +1,103 @@
+ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+tbody, td, tfoot, th, thead, tr {
+    padding: 0.7em !important;
+}
+
+hr {
+    margin: 3em 0em;
+    width: 90%;
+}
+
+.join-title {
+    margin: 0em 2em;
+    text-align: center;
+}
+
+.join-title img {
+    width: 110px;
+}
+
+.join {
+    width: 100%;
+    margin: 0em 4em;
+    padding-top: 4em;
+}
+
+.join-table .join-tr td {   
+    color: #636466;
+    font-weight: 500;
+    width: 150px;
+}
+
+.join-table .join-tr>td:nth-child(2) {
+    width: 500px;
+}
+
+.join-table .join-tr>td:nth-child(2)> input{
+    border: 0.5px solid #B3B3B3;
+    border-radius: 50px;
+    padding: 0.4em 1em;
+    color: #636466;
+    width: 100%;
+}
+
+
+.join-check {
+    display: flex;
+}
+
+.join-check .form-check {
+    width: 100px;
+}
+
+.join-check-input {
+    font-size: 24px;
+    margin: auto;
+}
+
+.join-check-label {
+    font-size: 18px;
+}
+
+.form-check-input:checked {
+    background-color: #B3B3B3 !important;
+    border-color: #B3B3B3 !important;
+}
+
+.like-check {
+    display: flex;
+    justify-content: space-between ;
+    margin-bottom: 1em;
+}
+
+.join2 {
+    color: #636466;
+    font-weight: 500;
+    margin: 0em 1em;
+    width: 1200px;
+}
+
+.like-title {
+    font-size: 1.05em;
+    margin-bottom: 30px;
+}
+
+.modifybtn {
+    display: flex;
+    justify-content: center;
+    width: 1300px;
+}
+
+.modifybtn button {
+    border: 0px solid;
+    border-radius: 50px;
+    background: var(--accent-color);
+    padding: 0.6em 5em;
+    color: white;
+    font-size: 1.2rem;
+    margin: 3em 0em;
+}

@@ -1,0 +1,29 @@
+/* Mypage-menu Page */
+.mypage {
+    margin: 0em 4em;
+}
+
+.mypage .user-name {
+    text-align: center;
+    margin: 3em 0em;
+    color: #636466;
+}
+
+.mypage .userinfo ul {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #B3B3B3;
+    background: white;
+    padding: 4em;
+}
+
+.mypage ul {
+    padding: 0;
+}
+
+.mypage .userinfo ul>li {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+

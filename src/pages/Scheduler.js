@@ -36,6 +36,7 @@ import Close from '@material-ui/icons/Close';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 import Create from '@material-ui/icons/Create';
 
+import scheduler  from '../apis/scheduler';
 import { appointments } from './data';
 
 const containerStyles = theme => ({
@@ -285,7 +286,7 @@ class SchedulerPage extends React.PureComponent {
 		super(props);
 		this.state = {
 			data: appointments,
-			currentDate: '2021-06-27',
+			currentDate: '2021-05-27',
 			confirmationVisible: false,
 			editingFormVisible: false,
 			deletedAppointmentId: undefined,
@@ -340,6 +341,28 @@ class SchedulerPage extends React.PureComponent {
 	componentDidUpdate() {
 		this.appointmentForm.update();
 	}
+
+	componentDidMount(){
+		this.getScheduler();
+	}
+
+	async getScheduler(){
+		const data = {
+			"username" : "admin",
+		}
+		const header = {
+			headers: {
+				Authorization: `JWT ${localStorage.getItem('token')}`
+			}
+		}
+		const response = await scheduler.post('/', data, header);
+		if(response){
+			this.setState({
+				data: response.data
+			})
+		}
+	}
+
 
 	onEditingAppointmentChange(editingAppointment) {
 		this.setState({ editingAppointment });
