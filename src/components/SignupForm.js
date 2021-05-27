@@ -11,7 +11,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import '../static/signup.css';
 import JOIN from '../static/image/JOIN.png';
 
-const preferences = [
+const preferences1 = [
 	'유쾌한',
 	'어두운',
 	'감동적인',
@@ -19,6 +19,9 @@ const preferences = [
 	'힐링',
 	'설레는',
 	'잔잔한',
+]
+
+const preferences2 = [
 	'역동적인',
 	'유익한',
 	'사진 찍기 좋은',
@@ -87,16 +90,33 @@ class SignupForm extends Component {
 		});
 	}
 
-	handle_date = (date) => {
+	handle_date = (e) => {
+		const date = e.target.value;
 		this.setState({
-			birth: format(date, 'yyyy-MM-dd')
+			birth: date
 		})
 	}
 
-	renderPreferences = () => {
-		let checkbox = preferences.map((item) =>
+	renderPreferences1 = () => {
+		let checkbox = preferences1.map((item) =>
 			<div className="form-check">
 				<input
+					className="form-check-input join-check-input"
+					type="checkbox"
+					name="preferences"
+					onChange={this.handle_checkbox.bind(this, item)}
+				/>
+				<label className="form-check-label join-check-label">{item}</label>
+			</div>
+		)
+		return checkbox
+	}
+
+	renderPreferences2 = () => {
+		let checkbox = preferences2.map((item) =>
+			<div className="form-check">
+				<input
+					className="form-check-input join-check-input"
 					type="checkbox"
 					name="preferences"
 					onChange={this.handle_checkbox.bind(this, item)}
@@ -121,29 +141,9 @@ class SignupForm extends Component {
 		return checkbox
 	}
 
-	renderDatePicker = () => {
-		return (
-			<MuiPickersUtilsProvider utils={DateFnsUtils}>
-				<KeyboardDatePicker
-					disableToolbar
-					variant="inline"
-					format="yyyy-MM-dd"
-					margin="normal"
-					id="date-picker-inline"
-					label="생년월일"
-					value={this.state.birth}
-					onChange={this.handle_date}
-					KeyboardButtonProps={{
-						'aria-label': 'change date',
-					}}
-				/>
-			</MuiPickersUtilsProvider>
-		)
-	}
 
 	render() {
 		const state = this.state;
-
 		return (
 		<div>
 			<div className="join-title">
@@ -208,50 +208,59 @@ class SignupForm extends Component {
 					</tr>
 				</table>
 				<hr/>
-					<table className="join-table">
-						<tr className="join-tr">
-							<td>휴대폰 번호</td>
-							<td>
-							<input
-								type="text"
-								name="contact"
-								value={this.state.contact}
-								placeholder="핸드폰번호 11자리를 입력하세요."
-								onChange={this.handle_change}
-							/>
-							</td>
-						</tr>
-						<tr className="join-tr">
-							<td>성 별</td>
-							<td className="join-check">
-								{ this.renderGender() }
-							</td>
-						</tr>
-					</table>
-						<tr className="join-tr">
-							<td>취 향</td>
-							<td className="join-check">
-								{ this.renderPreferences() }
-							</td>
-						</tr>
+				<table className="join-table">
+					<tr className="join-tr">
+						<td>휴대폰 번호</td>
+						<td>
+						<input
+							type="text"
+							name="contact"
+							value={this.state.contact}
+							placeholder="핸드폰번호 11자리를 입력하세요."
+							onChange={this.handle_change}
+						/>
+						</td>
+					</tr>
+					<tr className="join-tr">
+						<td>생 년 월 일</td>
+						<td>
+						<input
+							type="date"
+							name="birth"
+							value={this.state.birth}
+							onChange={this.handle_date}
+						/>
+						</td>
+					</tr>
+					<tr className="join-tr">
+						<td>성 별</td>
+						<td className="join-check">
+							{ this.renderGender() }
+						</td>
+					</tr>
+				</table>
 			</div>
-			<Form onSubmit={e => this.props.handle_signup(e, state)}>
-
-				<Form.Field>
-					취향을 선택하세요:
-				</Form.Field>
-				{this.renderPreferences()}
-				<Form.Field>
-					성별:
-				</Form.Field>
-				{this.renderGender()}
-				<Form.Field>
-					생년월일:
-				</Form.Field>
-				{this.renderDatePicker()}
-				<Form.Button>회원가입 완료</Form.Button>
-			</Form>
+			<hr/>
+			<div className="join2">
+				<div className="like-title">
+					<p>취향 선택 <span>(최대 2개까지 선택 가능합니다.)</span></p>
+				</div>
+				<div className="like-check">
+					{ this.renderPreferences1() }
+				</div>
+				<div className="like-check">
+					{ this.renderPreferences2() }
+				</div>
+			</div>
+			<hr />
+			<div className="modifybtn">
+				<button onClick={() => this.props.handle_signup(state)}>회원가입</button>
+            </div>
+			<footer>
+				<p>© 2021. COMMA Co. all rights reserved.</p>
+			</footer>
 		</div>
+			
 		);
 	}
 }

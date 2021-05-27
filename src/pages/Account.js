@@ -64,6 +64,7 @@ class Account extends Component {
 			logged_in: localStorage.getItem('token') ? true : false,
 			username: '',
 		};
+		this.handle_signup = this.handle_signup.bind(this);
 	}
 
 	componentDidMount() {
@@ -85,8 +86,8 @@ class Account extends Component {
 	}
 
 	// fetch 해서 state 에 가져오는법 url을 이것저것 바꿔줘서 출력하는법
-	handle_login = (e, data) => {
-		e.preventDefault();
+	handle_login = (data) => {
+		console.log(data);
 		fetch('http://tiffany3123.pythonanywhere.com//token-auth/', {
 			method: 'POST',
 			headers: {
@@ -96,9 +97,9 @@ class Account extends Component {
 		})
 			.then(res => res.json())
 			.then(json => {
-				console.log(json);
 				localStorage.setItem('token', json.token);
 				localStorage.setItem('username', json.user.username);
+				localStorage.setItem('pk', json.user.pk);
 				this.setState({
 					logged_in: true,
 					displayed_form: '',
@@ -110,9 +111,8 @@ class Account extends Component {
 			})
 	};
 
-	handle_signup = (e, data) => {
-		console.log(JSON.stringify(data))
-		e.preventDefault();
+	handle_signup = (data) => {
+		console.log(data);
 		fetch('http://tiffany3123.pythonanywhere.com/user/users/', {
 			method: 'POST',
 			headers: {
@@ -123,7 +123,8 @@ class Account extends Component {
 			.then(res => res.json())
 			.then(json => {
 				localStorage.setItem('token', json.token);
-				localStorage.setItem('username', json.user.username);
+				localStorage.setItem('pk', json.pk);
+				localStorage.setItem('username', json.username);
 				this.setState({
 					logged_in: true,
 					displayed_form: '',
@@ -135,6 +136,8 @@ class Account extends Component {
 	handle_logout = () => {
 		localStorage.removeItem('token');
 		localStorage.removeItem('username');
+		localStorage.removeItem('pk');
+
 		this.setState({ logged_in: false, username: '' });
 	};
 

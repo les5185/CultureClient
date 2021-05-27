@@ -109,6 +109,7 @@ function FriendSearch(props) {
 			const body = {
 				user: localStorage.getItem('username'),
 			}
+			console.log(body);
 			const response = await social.post('friends/', body);
 			if (response) {
 				this.setState({

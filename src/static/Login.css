@@ -1,0 +1,61 @@
+.login {
+    text-align: center;
+}
+
+.login-img img {
+    width: 100px;
+    margin-top: 1em;
+    margin-bottom: 2.3em;
+}
+
+.idANdPW input {
+    border-radius: 50px;
+    width: 30%;
+    border: 0.5px solid #B3B3B3;
+    padding: 0.5em 1em;
+    margin: 0.5em 0em;
+}
+
+.idANdPW input::placeholder  {
+    color:#B3B3B3;
+
+}
+
+.login .agree {
+    display: flex;
+    justify-content: flex-end;
+    width: 640px;
+    padding: 0.5em 0em;
+    color: #636466;
+}
+.login .agree > li {
+    padding: 0em 0.5em;
+}
+
+.loginbtn {
+    display: flex;
+    justify-content: center;
+}
+
+.loginbtn button {
+    border: 0px solid;
+    border-radius: 50px;
+    background: #B3B3B3;
+    padding: 0.5em 1em;
+    color: white;
+    width: 30%
+}
+
+.loginlist {
+    display: flex;
+    justify-content: center;
+    padding: 0em;
+    margin: 1em auto;
+    font-weight: 500;
+    color: #636466;
+    font-size: 0.9em;
+}
+
+.loginlist li {
+    padding: 0em 0.2em;
+}

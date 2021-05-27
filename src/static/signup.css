@@ -95,7 +95,7 @@ hr {
 .modifybtn button {
     border: 0px solid;
     border-radius: 50px;
-    background: var(--accent-color);
+    background: #B3B3B3;
     padding: 0.6em 5em;
     color: white;
     font-size: 1.2rem;
