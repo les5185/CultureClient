@@ -102,6 +102,7 @@ class Home extends Component {
 		this.getSearch = this.getSearch.bind(this);
 		this.getPreferedContents = this.getPreferedContents.bind(this);
 		this.handleDetail = this.handleDetail.bind(this);
+		this.handleImage = this.handleImage.bind(this);
 	}
 
 	componentDidMount() {
@@ -239,6 +240,12 @@ class Home extends Component {
 		}))
 	}
 
+	handleImage() {
+		this.setState({
+			page: "image"
+		})
+	}
+
 	handleDetail(data) {
 		this.setState({
 			currentContent: data,
@@ -334,6 +341,23 @@ class Home extends Component {
 						<h3>{currentContent.end_time.slice(11, 16)}</h3>
 					</div>
 					<button onClick={this.handleBack}>돌아가기</button>
+					<button onClick={this.handleImage}></button>
+					
+				</div>
+			)
+		}
+	}
+
+	renderImage() {
+		const { currentContent } = this.state;
+		if(this.state.page === "image") {
+			return (
+				<div>
+					<div>
+						<img src={"http://tiffany3123.pythonanywhere.com"+currentContent.content.image} alt="사진없음" style={{ width: "100%", height: "100%"}} />
+					</div>
+					<button onClick={this.handleBack}>돌아가기</button>
+					<button></button>
 					
 				</div>
 			)
@@ -390,6 +414,7 @@ class Home extends Component {
 				{ this.renderSchduler() }
 				{ this.renderSearch() }
 				{ this.renderDetail() }
+				{ this.renderImage() }
 			</div>
 		)
 	}
