@@ -4,17 +4,34 @@ import content2 from '../apis/content2';
 import social from '../apis/social';
 import { Input, Button, Icon } from 'semantic-ui-react';
 import StyledScheduler from '../components/Scheduler';
+import daybreak from '../static/image/daybreak.png';
+import more from '../static/image/more.png';
+
+
 import { add } from 'date-fns';
 
 function FriendList(props) {
 	const { users } = props;
 	let _users;
+	const containerStyle = {
+		display: 'flex',
+		alignItems: "center",
+		justifyContent: 'center',
+		width: '100%',
+		marginBottom: 5
+	}
+	const inputStyle = {
+		marginRight: 5
+	}
 
+	const spanStyle = {
+		fontSize: 20
+	}
 	if(users){
 		_users = users.map(user => (
-			<div>
-				{user.username}
-				<input type="checkbox" value={user.pk} onChange={props.handleCheckbox}/>
+			<div style={containerStyle}>
+				<input style={inputStyle} type="checkbox" value={user.pk} onChange={props.handleCheckbox}/>
+				<span style={spanStyle}>{user.username}</span>
 			</div>
 		))
 	}
@@ -61,12 +78,12 @@ function ContentList(props) {
 
 function SpecificContentList(props) {
 	const _contents = props.contents.map((content, index) => {
-		if(index < 5) {
+		if(5<index < 11) {
 			return (
-				<div>
+				<div style={{maxWidth: 150}}>
 					<img src={"http://tiffany3123.pythonanywhere.com"+content.content.image} alt="사진없음" style={{ width: "150px", height: "150px"}} />
 					<h1>{content.content.title}</h1>
-					<button onClick={() => props.handleDetail(content)}>detail</button>
+					<Button onClick={() => props.handleDetail(content)}>더보기</Button>
 				</div>
 			)
 		}
@@ -74,6 +91,24 @@ function SpecificContentList(props) {
 	})
 	return _contents
 }
+
+function SpecificContentList2(props) {
+	const _contents = props.contents.map((content, index) => {
+		if(index < 5) {
+			return (
+				<div style={{maxWidth: 150}}>
+					<img src={"http://tiffany3123.pythonanywhere.com"+content.content.image} alt="사진없음" style={{ width: "150px", height: "150px"}} />
+					<h1>{content.content.title}</h1>
+					<Button onClick={() => props.handleDetail(content)}>더보기</Button>
+				</div>
+			)
+		}
+		else return null
+	})
+	return _contents
+}
+
+
 
 class Home extends Component {
 	constructor(props) {
@@ -139,6 +174,7 @@ class Home extends Component {
 			}
 		}
 	}
+
 
 	async getSpecificFriendContent () {
 		const { addedFriend } = this.state;
@@ -259,28 +295,41 @@ class Home extends Component {
 		if(this.state.page === "home") {
 			if(localStorage.getItem('pk')) {
 				return (
-					<div>
-						<button onClick={this.handlePage}>스케줄러 이동</button>
+					<div class="cool">
+						<div style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center', width: 'calc(100% - 38px)'}}>
+							<Button style={{
+							marginLeft: 200
+						}} onClick={this.handlePage}>스케줄 편집</Button>
+						</div>
+
 						<StyledScheduler />
 						<hr />
 						<h1>전체 콘텐츠</h1>
 						<div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
 							<ContentList contents={contents}/>
 						</div>
-						<hr />
-						<h1>내 일정 맞춤 콘텐츠</h1>
+						<hr/>
+						<h1>이번주 추천 문화생활</h1>
 						<div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
-							<SpecificContentList contents={specificContents} handleDetail={this.handleDetail}/>
+							<SpecificContentList2 contents={specificContents} handleDetail={this.handleDetail}/>
 						</div>
-						<hr />
-						<h1>친구 일정 맞춤 콘텐츠</h1>
-						<div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
-							<SpecificContentList contents={specificFriendContents} handleDetail={this.handleDetail}/>
-						</div>
-						<hr />
-						<h1>취향 맞춤 콘텐츠</h1>
+						<hr/>
+						<h1>취향 저격 문화생활</h1>
 						<div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
 							<ContentList contents={preferedContents}/>
+						</div>
+						<hr/>
+						<div>
+						<h1>지금 뜨는 문화생활</h1>
+						<div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
+						</div>
+							<img src={daybreak} alt="사진없음" style={{ width: "150px", height: "150px"}} />
+							<h4> 데이브레이크 3주년 콘서트</h4>
+						</div>
+						<hr/>
+						<h1>친구와 함께 갈만한 문화생활</h1>
+						<div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
+							<SpecificContentList contents={specificFriendContents} handleDetail={this.handleDetail}/>
 						</div>
 					</div>
 
@@ -307,7 +356,7 @@ class Home extends Component {
 					<div>
 						<FriendList users={friends} handleCheckbox={this.handleCheckbox}/>
 					</div>
-					<button onClick={this.handleBack}>돌아가기</button>
+					<Button onClick={this.handleBack}>돌아가기</Button>
 					
 				</div>
 			)
@@ -322,7 +371,7 @@ class Home extends Component {
 					<div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
 						<ContentList contents={results}/>
 					</div>
-					<button onClick={this.handleBack}>돌아가기</button>
+					<Button onClick={this.handleBack}>돌아가기</Button>
 					
 				</div>
 			)
@@ -340,8 +389,8 @@ class Home extends Component {
 						<h3>{currentContent.start_time.slice(11, 16)}</h3>
 						<h3>{currentContent.end_time.slice(11, 16)}</h3>
 					</div>
-					<button onClick={this.handleBack}>돌아가기</button>
-					<button onClick={this.handleImage}></button>
+					<Button onClick={this.handleBack}>돌아가기</Button>
+					<Button onClick={this.handleImage}>예약하기</Button>
 					
 				</div>
 			)
@@ -356,8 +405,8 @@ class Home extends Component {
 					<div>
 						<img src={"http://tiffany3123.pythonanywhere.com"+currentContent.content.image} alt="사진없음" style={{ width: "100%", height: "100%"}} />
 					</div>
-					<button onClick={this.handleBack}>돌아가기</button>
-					<button></button>
+					<Button onClick={this.handleBack}>돌아가기</Button>
+					<Button></Button>
 					
 				</div>
 			)
@@ -365,47 +414,8 @@ class Home extends Component {
 	}
 
 	render() {
-		return (//여기다가 매안페이지 html 처럼 작성하기..
+		return (
 			<div>
-				{/* <div>Main Page</div>
-      <div className="row" style="margin-bottom: 1em; padding-top: 1em;">
-          <div id="carouselExampleIndicators" className="col-md-6 carousel slide" data-bs-ride="carousel" style="height: 400px;">
-          <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div className="carousel-inner">
-              <div className="carousel-item active">
-              <img src="./img/인터랙티브 배너_서비스 소개.png" className="d-block w-100" alt="...">
-              </div>
-              <div className="carousel-item">
-              <img src="./img/인터랙티브 배너_광고홍보.png" className="d-block w-100" alt="...">
-              </div>
-              <div className="carousel-item">
-              <img src="./img/인터렉티브 배너_이벤트소개페이지.png" className="d-block w-100" alt="...">
-              </div>
-          </div>
-          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Next</span>
-          </button>
-          </div>
-      {/* <!-- 캘린더 --> */}
-        {/* <img className="col-md-6 calendarimg" src="./img/calendar.png"/>
-        <button className="calendarbtn">로그인 후 이용 가능한 서비스입니다</button>
-          {/* <!-- Button --> */}
-        {/* <div className="col-md-12 cal-modifybtn">
-          <a href="#"><button >캘린더 수정</button></a>
-        </div>
-      </div>
-     {/* 검색 */}
-      {/* <noscript>You need to enable JavaScript to run this app.</noscript>
-      <div id="root"></div> */}
 				{
 					this.state.page !== "detail" &&
 					<Search setText={this.setText} sendText={this.handleSearch}/>
@@ -414,7 +424,7 @@ class Home extends Component {
 				{ this.renderSchduler() }
 				{ this.renderSearch() }
 				{ this.renderDetail() }
-				{ this.renderImage() }
+				{ this.renderImage()}
 			</div>
 		)
 	}

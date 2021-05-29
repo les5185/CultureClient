@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,176 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+:root{
+  /* Color */
+  --body-background-color:#FCF9F5;
+  --text-color:#636466;
+  --accent-color:#D6A1A3;
+  --pink-light: #F1DFE0;
+  /* Font-Size */
 }
+
+body {
+  margin: 0em 3em !important;
+  background-color:var(--body-background-color);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: #636466;
+}
+
+a:hover {
+  color: #636466;
+}
+
+li {
+  list-style: none;
+}
+
+footer {   
+  border-top: 1px solid;
+  text-align: center;
+  padding: 3em;
+  margin-top: 2em;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+ /* Logo */
+ .navbar-brand .logo {
+  width: 190px;
+}
+
+/* NavBar */
+.bg-light {
+  background-color: #ffffff00 !important;
+  margin-bottom: 2em;
+  border-bottom: solid 1px var(--text-color);
+  padding: 2em 0em;
+}
+
+.menu { 
+  justify-content: flex-end;
+}
+
+.collapse .navbar-nav {
+  margin-right: 1em;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: var(--accent-color);
+
+}
+
+.navbar-brand .logo {
+  width: 50%;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: var(--accent-color);
+}
+
+.navbar-light .navbar-nav .nav-link:active {
+  color: var(--accent-color);
+}
+
+.bellbtn, .userbtn {
+  width: 55%;
+  position: relative;
+  bottom: 4px;
+  left: 15px;
+}
+
+/* Calendar Image */
+.calendarimg {
+  filter: blur(2px);
+  margin-bottom: 2em;
+  width: 631px;
+  height: 330px;
+}
+
+.calendarbtn {
+  position: absolute;
+  left: 839px;
+  top: 320px;
+  font-weight: 400;
+  font-size: 1.2rem;
+  border: 1px solid;
+  width: 25%;
+  border-radius: 50px;
+  padding: 0.3em 0.5em;
+}
+
+.cal-modifybtn {
+  text-align: right;
+}
+
+.cal-modifybtn>a> button {
+  border: 0px solid;
+  border-radius: 4px;
+  background: var(--accent-color);
+  padding: 0.5em 4em;
+  color: white;
+  position: relative;
+  bottom: 46px;
+  width: 47.5%;
+  right: 22px;
+}
+
+
+/* Swiper-culture-Friend */
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  display: block !important;
+  width: 180px !important;
+  margin-right: 5em !important;
+  
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.culture-category {
+  color: #636466;
+  font-size: 1rem;
+  margin: 2em 0em;
+}
+
+.culturecontent p {
+  font-size: 0.9em; 
+  margin: 1em 0em;
+}
+
+/* Footer */

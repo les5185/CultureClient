@@ -12,13 +12,14 @@ import SchedulerPage from './Scheduler';
 import Social from '../pages/Social';
 import '../static/Mypage.css';
 import menubtn from '../static/image/mp-menubtn.png';
+import { Input, Button, Icon } from 'semantic-ui-react';
 
 
 function Mypage(props) {
 	return (
 		< div className="row mypage" >
 			<div className="user-name">
-				<h3>홍길동님 안녕하세요!</h3>
+				<h3>이은솔님 안녕하세요!</h3>
 			</div>
 			<div className="userinfo col-6">
 				<Link to ="/mypage-userinfo.html">
@@ -177,8 +178,8 @@ class Account extends Component {
 				{
 					this.renderMypage()
 				}
-				<button onClick={this.handle_logout}>토큰 지우기</button>
-				<button onClick={this.display_form.bind(this, 'signup')}>회원가입 하기</button>
+				<Button onClick={this.handle_logout}>토큰 지우기</Button>
+				<Button onClick={this.display_form.bind(this, 'signup')}>회원가입 하기</Button>
 			</div>
 		);
 	}

@@ -8,7 +8,7 @@ function FriendList(props) {
 
 	if(users){
 		_users = users.map(user => (
-			<div>
+			<div style={{fontSize: 20}}>
 				{user.username}
 			</div>
 		))
@@ -16,8 +16,8 @@ function FriendList(props) {
 	return(
 		<div>
 			{_users}
-			<button onClick = {props.setIsSearch}>친구 추가하기
-			</button>
+			<Button onClick = {props.setIsSearch}>친구 추가하기
+			</Button>
 		</div>
 	)
 }

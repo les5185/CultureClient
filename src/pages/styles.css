@@ -1,0 +1,23 @@
+.photo {
+    height: 175px;
+    width: 175px;
+}
+.blank-postlist {
+    display:flex;
+    justify-content: space-evenly;
+    }
+a {
+    text-decoration: none;
+    color: #636466;
+}
+
+a:hover {
+    color: #636466;
+}
+
+li {
+    list-style: none;
+}
+.blank-postlist li {
+    margin: 1em;
+}

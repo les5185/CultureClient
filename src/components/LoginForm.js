@@ -61,11 +61,6 @@ class LoginForm extends React.Component {
 			<div className="loginbtn">
 				<button onClick={() => this.props.handle_login(state)}>로그인</button>
 			</div>
-			<ul className="loginlist">
-				<li><a href="#">아이디 찾기  |</a></li>
-				<li><a href="#">비밀번호 찾기  |</a></li>
-				<li><a href="#">회원가입 찾기  |</a></li>
-			</ul>
 			<footer>
 				<p>© 2021. COMMA Co. all rights reserved.</p>
 			</footer>

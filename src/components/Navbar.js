@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../static/image/logo.png'
+import user from '../static/image/user.png'
 import '../static/navbar.css';
 
 
@@ -40,9 +41,14 @@ class NavBar extends Component {
 								스포츠
 								</a>
 						</li>
+						{/* <li className="nav-item">
+							<a className="nav-link" href="/admin">
+								로그인/회원가입 
+								</a>
+						</li> */}
 						<li className="nav-item">
 							<a className="nav-link" href="/admin">
-								로그인/회원가입
+								<img className = "logo" src={user} alt="이미지 없음"/>
 								</a>
 						</li>
 					</ul>

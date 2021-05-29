@@ -42,3 +42,15 @@
 .navbar-light .navbar-nav .nav-link.active {
     color: rgba(0,0,0,.55) !important;
 }
+
+/* cool */
+
+
+
+.navbar {
+    justify-content: space-between !important;
+
+}
+.navbar-collapse {
+    flex-grow: 0 !important;
+}
